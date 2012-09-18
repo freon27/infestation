@@ -23,6 +23,9 @@
     <script>scripts\TakeDamage.gml</script>
     <script>scripts\CheckHealth.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obstruction</object>
     <object>objects\controller_obj_rename</object>

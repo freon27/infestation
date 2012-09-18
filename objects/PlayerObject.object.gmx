@@ -126,33 +126,43 @@ current_clip = clip_size
             <kind>1</kind>
             <string> moving = path_position
 
-with(EnemyObject){
+var queue;
+queue = ds_priority_create();
+
+
+ with(EnemyObject){
+    ds_priority_add(queue, id, distance_to_object(other));
+ }
+ 
+ 
+while (!ds_priority_empty(queue)) {
+    enemy = ds_priority_delete_min(queue);
     // If we have line of sight
-    if (! collision_line(self.x, self.y, other.x, other.y, obstruction, 1, 1)){
+    if (! collision_line(enemy.x, enemy.y, self.x, self.y, obstruction, 1, 1)){
         // take a shot
         //check we have ammo
         if (   
-        ! other.currently_firing 
-        &amp;&amp; ! other.reloading 
-        &amp;&amp; (other.fire_while_moving 
-        || other.moving == 0 
-        || other.moving == 1)){
+        ! self.currently_firing 
+        &amp;&amp; ! self.reloading 
+        &amp;&amp; (self.fire_while_moving 
+        || self.moving == 0 
+        || self.moving == 1)){
             
-            if (other.current_clip == 0){
-                other.reloading = 1
-                other.alarm[1] = room_speed * other.reload_time        
+            if (self.current_clip == 0){
+                self.reloading = 1
+                self.alarm[1] = room_speed * self.reload_time        
             }
             else {
-                other.direction = point_direction(other.x, other.y, self.x, self.y)
-                other.currently_firing = 1
-                repeat(other.projectiles_per_shot){ // Repeats the loop 5 times
-                    shot = instance_create(other.x, other.y, ProjectileParent)
-                    gun_spread = (random(1) * 2-1) * random(other.spread_factor)
-                    shot.direction = point_direction(shot.x, shot.y, self.x, self.y) + gun_spread
+                self.direction = point_direction(self.x, self.y, enemy.x, enemy.y)
+                self.currently_firing = 1
+                repeat(self.projectiles_per_shot){ // Repeats the loop 5 times
+                    shot = instance_create(self.x, self.y, ProjectileParent)
+                    gun_spread = (random(1) * 2-1) * random(self.spread_factor)
+                    shot.direction = point_direction(shot.x, shot.y, enemy.x, enemy.y) + gun_spread
                     shot.speed = 10
-                    shot.damage = other.damage
-                    other.alarm[0] = room_speed / other.fire_rate
-                    other.current_clip -= 1
+                    shot.damage = self.damage
+                    self.alarm[0] = room_speed / self.fire_rate
+                    self.current_clip -= 1
                 }
             }
         }
