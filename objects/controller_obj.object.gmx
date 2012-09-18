@@ -69,13 +69,28 @@ if keyboard_check(vk_down)
     view_yview[0] += camera_speed
 }
 
+
 with EnemyObject {
     self.visible = false
-    with PlayerObject {
+}
+
+with PlayerObject {
+    closest_visible_enemy = false
+    with EnemyObject {            
         if (! collision_line(self.x, self.y, other.x, other.y, obstruction, 1, 1)) {
-            other.visible = true
+            self.visible = true
+            distance_to_enemy = distance_to_object(other)
+            
+            if ( ! other.closest_visible_enemy || distance_to_enemy &lt; other.closest_visible_enemy ){
+                other.closest_visible_enemy = self.id
+            }
         }
     }
+    
+    if (closest_visible_enemy){
+        script_execute(Fire, closest_visible_enemy)
+    }
+    
 }
 </string>
           </argument>

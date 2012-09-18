@@ -1,2 +1,4 @@
 
 svn add "C:\Users\Nick\Documents\GameMaker\Projects\Infestation.gmx\fonts\font0.font.gmx"
+svn add --non-recursive "C:\Users\Nick\Documents\GameMaker\Projects\Infestation.gmx\scripts"
+svn add "C:\Users\Nick\Documents\GameMaker\Projects\Infestation.gmx\scripts\script2.gml"

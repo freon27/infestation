@@ -124,8 +124,8 @@ current_clip = clip_size
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> moving = path_position
-
+            <string>  moving = path_position
+/*
 var queue;
 queue = ds_priority_create();
 
@@ -168,7 +168,9 @@ while (!ds_priority_empty(queue)) {
         }
     }
 }
+ds_priority_destroy(queue);
 
+*/
 self.image_angle = self.direction
 </string>
           </argument>

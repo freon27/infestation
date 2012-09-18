@@ -22,6 +22,7 @@
   <scripts name="scripts">
     <script>scripts\TakeDamage.gml</script>
     <script>scripts\CheckHealth.gml</script>
+    <script>scripts\Fire.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
