@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>ButtonParent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="6" enumb="4">
@@ -28,6 +28,12 @@
             <string>with(PlayerObject){
     if(selected){
         fire_at_will = ! fire_at_will
+        if(fire_at_will){
+            other.image_index = 0
+        }
+        else {
+            other.image_index = 1
+        }
    }
     
 }

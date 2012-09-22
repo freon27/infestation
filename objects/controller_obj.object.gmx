@@ -36,6 +36,20 @@ menu = instance_create(view_xview[0]+5, view_yview[0]+5, MenuBackObject)
 menu.buttons[0] = instance_create(view_xview[0] + 20, view_yview[0] + 20, FireButtonObject) 
 menu.buttons[1] = instance_create(view_xview[0] + 104, view_yview[0] + 20, ReloadButtonObject)
 menu.buttons[2] = instance_create(view_xview[0] + 188, view_yview[0] + 20, GrenadeButtonObject) 
+
+selected_unit = 0
+unit_count = 0
+with PlayerObject {
+    other.unit_count += 1
+    self.unit_index = other.unit_count
+    if other.unit_count == 1 {
+        self.selected = 1
+        other.selected_unit = 1
+        script_execute(UpdateUISelected)
+    }
+    
+}
+
 </string>
           </argument>
         </arguments>
@@ -173,7 +187,7 @@ with PlayerObject {
           <argument>
             <kind>1</kind>
             <string>
-instance_found = instance_position(mouse_x,mouse_y,PlayerObject)
+instance_found = instance_position(mouse_x,mouse_y,Selectable)
 if (instance_found == noone){
     with(PlayerObject){
         if (self.selected){   
@@ -192,14 +206,15 @@ if (instance_found == noone){
         }
     }
 }
-else {
+else if (! instance_position(mouse_x,mouse_y,UI)){
+    // need to track so we only select one unit
+    var player_selected;
+    player_selected = false
     with(PlayerObject){
-        if (position_meeting(mouse_x, mouse_y, self.id)){
+        if (position_meeting(mouse_x, mouse_y, self.id) &amp;&amp; ! player_selected){
             selected = 1
-            
-            with GrenadeButtonObject {
-                visible = other.grenadier
-            }               
+            player_selected = true
+            script_execute(UpdateUISelected)              
         }
         else {
             selected = 0
@@ -236,6 +251,45 @@ else {
         draw_line_width_color(self.x - 16, self.y + 20,self.x + 16,self.y + 20, 1, c_white, c_white)
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="78">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+selected_unit += 1
+if (selected_unit &gt; unit_count){
+    selected_unit = 1
+}
+
+with(PlayerObject){
+    if (unit_index == other.selected_unit){
+        self.selected = 1
+        script_execute(UpdateUISelected)
+    }
+    else {
+        self.selected = 0
+    }
+}
+alarm[0] = room_speed / 2
+
 </string>
           </argument>
         </arguments>

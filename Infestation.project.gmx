@@ -31,6 +31,7 @@
     <script>scripts\Fire.gml</script>
     <script>scripts\Reload.gml</script>
     <script>scripts\ThrowGrenade.gml</script>
+    <script>scripts\UpdateUISelected.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -55,6 +56,9 @@
     <object>objects\GrenadeButtonObject</object>
     <object>objects\bullet</object>
     <object>objects\shrapnel</object>
+    <object>objects\ButtonParent</object>
+    <object>objects\Selectable</object>
+    <object>objects\UI</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>

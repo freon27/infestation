@@ -16,5 +16,6 @@
   <For3D>0</For3D>
   <frames>
     <frame index="0">images\sprite11_0.png</frame>
+    <frame index="1">images\sprite11_1.png</frame>
   </frames>
 </sprite>
