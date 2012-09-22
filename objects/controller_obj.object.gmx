@@ -25,11 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.AI_grid=mp_grid_create(0,0,room_width/16,room_height/16,32,32); //Creates the mp_grid
+            <string>//show_message('creating grid')
+global.AI_grid=mp_grid_create(0,0,room_width/16,room_height/16,32,32); //Creates the mp_grid
 mp_grid_add_instances(global.AI_grid,obstruction,false); //Adds all instances of wall object to AI grid...
 
 camera_speed = 5
 
+menu = instance_create(view_xview[0]+5, view_yview[0]+5, MenuBackObject)
+
+menu.buttons[0] = instance_create(view_xview[0] + 20, view_yview[0] + 20, FireButtonObject) 
+menu.buttons[1] = instance_create(view_xview[0] + 104, view_yview[0] + 20, ReloadButtonObject)
+menu.buttons[2] = instance_create(view_xview[0] + 188, view_yview[0] + 20, GrenadeButtonObject) 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_message('destroying grid')
+mp_grid_destroy(global.AI_grid)
 </string>
           </argument>
         </arguments>
@@ -87,10 +117,38 @@ with PlayerObject {
         }
     }
     
-    if (closest_visible_enemy){
+    if (closest_visible_enemy &amp;&amp; fire_at_will){
         script_execute(Fire, closest_visible_enemy)
     }
     
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="51">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+with PlayerObject {
+    if(selected){
+        script_execute(ThrowGrenade, mouse_x, mouse_y)
+    }
 }
 </string>
           </argument>
@@ -134,17 +192,20 @@ if (instance_found == noone){
         }
     }
 }
-else { 
+else {
     with(PlayerObject){
         if (position_meeting(mouse_x, mouse_y, self.id)){
             selected = 1
-            view_object[0] = self.object_index
+            
+            with GrenadeButtonObject {
+                visible = other.grenadier
+            }               
         }
         else {
             selected = 0
         }
     }
-    
+
 }
 </string>
           </argument>

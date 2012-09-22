@@ -147,7 +147,7 @@
   <option_textureGroup0_scaled>0</option_textureGroup0_scaled>
   <option_textureGroup_count>1</option_textureGroup_count>
   <option_textureGroups0>Default</option_textureGroups0>
-  <option_use_new_audio>False</option_use_new_audio>
+  <option_use_new_audio>0</option_use_new_audio>
   <option_variableerrors>False</option_variableerrors>
   <option_version>100</option_version>
   <option_version_build>0</option_version_build>

@@ -79,7 +79,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_number(destructible_objective_object) == 1){
+            <string>if (instance_number(destructible_objective_object) == 0){
     show_message('You win!')
     room_restart()
 }

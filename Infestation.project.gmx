@@ -14,6 +14,12 @@
     <sprite>sprites\tracer</sprite>
     <sprite>sprites\enemy_spawn_grille</sprite>
     <sprite>sprites\destroy_objective</sprite>
+    <sprite>sprites\BigBeastie</sprite>
+    <sprite>sprites\grenade</sprite>
+    <sprite>sprites\menu_bacl</sprite>
+    <sprite>sprites\sprite11</sprite>
+    <sprite>sprites\reload</sprite>
+    <sprite>sprites\grenade_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -23,13 +29,14 @@
     <script>scripts\TakeDamage.gml</script>
     <script>scripts\CheckHealth.gml</script>
     <script>scripts\Fire.gml</script>
+    <script>scripts\Reload.gml</script>
+    <script>scripts\ThrowGrenade.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
   </fonts>
   <objects name="objects">
     <object>objects\obstruction</object>
-    <object>objects\controller_obj_rename</object>
     <object>objects\PlayerObject</object>
     <object>objects\EnemyObject</object>
     <object>objects\ProjectileParent_rename</object>
@@ -40,6 +47,14 @@
     <object>objects\controller_obj</object>
     <object>objects\grille_spawn_object</object>
     <object>objects\ProjectileParent</object>
+    <object>objects\big_beastie_object</object>
+    <object>objects\GrenadeObject</object>
+    <object>objects\MenuBackObject</object>
+    <object>objects\FireButtonObject</object>
+    <object>objects\ReloadButtonObject</object>
+    <object>objects\GrenadeButtonObject</object>
+    <object>objects\bullet</object>
+    <object>objects\shrapnel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>

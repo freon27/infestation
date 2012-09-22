@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ( random(room_speed * 100) &lt; 10 ){
+            <string>
+spawn = random(room_speed * 100)
+if (spawn &lt;= 2){
+    instance_create(self.x, self.y, big_beastie_object)
+}
+else if ( random(room_speed * 100) &lt; 10 ){
     instance_create(self.x, self.y, EnemyObject)
 }
 </string>
