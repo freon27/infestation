@@ -30,9 +30,9 @@ damage = 20
 spread_factor = 20
 fire_rate = 30
 projectiles_per_shot = 1
-walking_speed = 1
+walking_speed = 1.5
 fire_while_moving = 0
-clip_size = 250
+clip_size = 300
 current_clip = clip_size
 reload_time = 5
 </string>

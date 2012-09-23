@@ -246,10 +246,41 @@ else if (! instance_position(mouse_x,mouse_y,UI)){
             <kind>1</kind>
             <string>with (PlayerObject) {
     ammo_perc = ceil(self.current_clip / self.clip_size * 100) 
-    draw_healthbar(self.x - 10,self.y - 20,self.x + 10,self.y - 16,ammo_perc,c_black,c_red,c_green,0,1,1)
+    draw_healthbar(self.x - 10,self.y - 21,self.x + 10,self.y - 16,ammo_perc,c_black,c_red,c_green,0,1,1)
     if (selected){
         draw_line_width_color(self.x - 16, self.y + 20,self.x + 16,self.y + 20, 1, c_white, c_white)
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with PlayerObject {
+    if(selected and ! reloading){
+        script_execute(Reload)
+        with(ReloadButtonObject){
+            image_index = 1
+            alarm[0] = other.reload_time * room_speed
+        }
+    }  
 }
 </string>
           </argument>
@@ -283,6 +314,9 @@ with(PlayerObject){
     if (unit_index == other.selected_unit){
         self.selected = 1
         script_execute(UpdateUISelected)
+        view_xview[0] = self.x - (view_hview[0] / 2)
+        view_yview[0] = self.y - (view_hview[0] / 2)
+        
     }
     else {
         self.selected = 0
