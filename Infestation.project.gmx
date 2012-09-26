@@ -16,10 +16,15 @@
     <sprite>sprites\destroy_objective</sprite>
     <sprite>sprites\BigBeastie</sprite>
     <sprite>sprites\grenade</sprite>
-    <sprite>sprites\menu_bacl</sprite>
+    <sprite>sprites\menu_back</sprite>
     <sprite>sprites\sprite11</sprite>
+    <sprite>sprites\scanner_button</sprite>
     <sprite>sprites\reload</sprite>
     <sprite>sprites\grenade_button</sprite>
+    <sprite>sprites\mine_button</sprite>
+    <sprite>sprites\blip</sprite>
+    <sprite>sprites\mine_unarmed_sprite</sprite>
+    <sprite>sprites\mine_armed_sprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -31,6 +36,7 @@
     <script>scripts\Fire.gml</script>
     <script>scripts\Reload.gml</script>
     <script>scripts\ThrowGrenade.gml</script>
+    <script>scripts\DropMine.gml</script>
     <script>scripts\UpdateUISelected.gml</script>
   </scripts>
   <fonts name="fonts">
@@ -52,13 +58,18 @@
     <object>objects\GrenadeObject</object>
     <object>objects\MenuBackObject</object>
     <object>objects\FireButtonObject</object>
+    <object>objects\ScannerButtonObject</object>
     <object>objects\ReloadButtonObject</object>
+    <object>objects\MineButtonObject</object>
     <object>objects\GrenadeButtonObject</object>
     <object>objects\bullet</object>
     <object>objects\shrapnel</object>
     <object>objects\ButtonParent</object>
     <object>objects\Selectable</object>
     <object>objects\UI</object>
+    <object>objects\ScannerBlipObject</object>
+    <object>objects\UnarmedMineObject</object>
+    <object>objects\ArmedMineObject</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>

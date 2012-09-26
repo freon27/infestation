@@ -33,6 +33,10 @@ throwing_grenade = false
 grenades = 0
 grenadier = false
 engineer = false
+scanner_available = false
+scanner_on = false
+mines = 0
+dropping_mine = false
 </string>
           </argument>
         </arguments>

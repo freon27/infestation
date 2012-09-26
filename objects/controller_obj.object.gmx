@@ -36,6 +36,9 @@ menu = instance_create(view_xview[0]+5, view_yview[0]+5, MenuBackObject)
 menu.buttons[0] = instance_create(view_xview[0] + 20, view_yview[0] + 20, FireButtonObject) 
 menu.buttons[1] = instance_create(view_xview[0] + 104, view_yview[0] + 20, ReloadButtonObject)
 menu.buttons[2] = instance_create(view_xview[0] + 188, view_yview[0] + 20, GrenadeButtonObject) 
+menu.buttons[3] = instance_create(view_xview[0] + 188 + 64, view_yview[0] + 20, ScannerButtonObject) 
+menu.buttons[4] = instance_create(view_xview[0] + 188 + 128, view_yview[0] + 20, MineButtonObject) 
+
 
 selected_unit = 0
 unit_count = 0
@@ -129,9 +132,14 @@ with PlayerObject {
                 other.closest_visible_enemy = self.id
             }
         }
+        else if(other.scanner_available &amp;&amp; other.scanner_on){
+            if (distance_to_object(other) &lt; 400 &amp;&amp; distance_to_object(ScannerBlipObject) &gt; 75){  //place_meeting(self.x, self.y,ScannerBlipObject
+                instance_create(self.x, self.y, ScannerBlipObject)
+            }
+        }
     }
     
-    if (closest_visible_enemy &amp;&amp; fire_at_will){
+    if (closest_visible_enemy &amp;&amp; fire_at_will &amp;&amp; ! scanner_on){
         script_execute(Fire, closest_visible_enemy)
     }
     
@@ -161,8 +169,14 @@ with PlayerObject {
             <string>
 with PlayerObject {
     if(selected){
-        script_execute(ThrowGrenade, mouse_x, mouse_y)
+        if(grenadier){
+            script_execute(ThrowGrenade, mouse_x, mouse_y)
+        }
+        if(engineer){
+            script_execute(DropMine, mouse_x, mouse_y)
+        }
     }
+    
 }
 </string>
           </argument>
@@ -256,6 +270,40 @@ else if (! instance_position(mouse_x,mouse_y,UI)){
         </arguments>
       </action>
     </event>
+    <event eventtype="10" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(PlayerObject){
+    if(selected &amp;&amp; scanner_available){
+        scanner_on = ! scanner_on
+        if(! scanner_on){
+            with ScannerButtonObject { image_index = 0 }
+        }
+        else {
+            with ScannerButtonObject { image_index = 1 }
+        }
+   }
+    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="10" enumb="82">
       <action>
         <libid>1</libid>
@@ -323,6 +371,41 @@ with(PlayerObject){
     }
 }
 alarm[0] = room_speed / 2
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="70">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(PlayerObject){
+    if(selected){
+        fire_at_will = ! fire_at_will
+        if(fire_at_will){
+            with (FireButtonObject){ image_index = 0 }
+        }
+        else {
+            with (FireButtonObject){ image_index = 1 }
+        }
+   }
+    
+}
 
 </string>
           </argument>

@@ -2,7 +2,7 @@
 <object>
   <spriteName>baddie</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>hp = 100
+walking_speed = 2.3
 </string>
           </argument>
         </arguments>
@@ -100,7 +101,7 @@ else {
     mp_grid_path(global.AI_grid,mypath,self.x,self.y,nearest_opponent.x, nearest_opponent.y,true); //Assigns the path...
     path_set_kind(mypath,1); //Sets the path to allow diagonals
     path_set_precision(mypath,8); //Sets the precision to make it curvy. Can be 1-8. 1 is straight, 8 curvy...
-    path_start(mypath,2,0,false); //Starts the path...
+    path_start(mypath,walking_speed,0,false); //Starts the path...
 }
 
 self.image_angle = self.direction
