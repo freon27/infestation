@@ -2,12 +2,35 @@
 <object>
   <spriteName>enemy_spawn_grille</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
-  <depth>10</depth>
+  <visible>0</visible>
+  <depth>50</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>active = true
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,13 +48,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-spawn = random(room_speed * 100)
-if (spawn &lt;= 2){
-    instance_create(self.x, self.y, big_beastie_object)
-}
-else if ( random(room_speed * 100) &lt; 10 ){
-    instance_create(self.x, self.y, EnemyObject)
+            <string>if active {
+    spawn = random(room_speed * 100)
+    var new_enemy;
+    if (spawn &lt;= 2){
+        new_enemy = instance_create(self.x, self.y, big_beastie_object)
+        new_enemy.spawn_point = self.id
+    }
+    //else if (spawn &lt;= 4){
+    //    instance_create(self.x, self.y, HelmetBeastVuln)
+    //}
+    else if ( random(room_speed * 100) &lt; 10 ){
+        new_enemy = instance_create(self.x, self.y, EnemyObject)
+        new_enemy.spawn_point = self.id
+    }
 }
 </string>
           </argument>

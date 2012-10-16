@@ -37,6 +37,8 @@ current_clip = clip_size
 reload_time = 2
 engineer = true
 mines = 3
+selected_weapon = 'mines'
+flame_ammo = 250
 </string>
           </argument>
         </arguments>

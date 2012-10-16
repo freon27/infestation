@@ -7,24 +7,35 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\obstruction_sprite</sprite>
+    <sprite>sprites\wall_corner1</sprite>
+    <sprite>sprites\wall_corner2</sprite>
+    <sprite>sprites\wall_corner3</sprite>
+    <sprite>sprites\wall_corner4</sprite>
     <sprite>sprites\assault</sprite>
     <sprite>sprites\gunner</sprite>
     <sprite>sprites\shotgun</sprite>
     <sprite>sprites\baddie</sprite>
     <sprite>sprites\tracer</sprite>
     <sprite>sprites\enemy_spawn_grille</sprite>
-    <sprite>sprites\destroy_objective</sprite>
+    <sprite>sprites\objective_sprite</sprite>
+    <sprite>sprites\computer</sprite>
     <sprite>sprites\BigBeastie</sprite>
+    <sprite>sprites\HelmetBeastHelmet</sprite>
+    <sprite>sprites\HelmetBeastVulnerables</sprite>
     <sprite>sprites\grenade</sprite>
     <sprite>sprites\menu_back</sprite>
     <sprite>sprites\sprite11</sprite>
     <sprite>sprites\scanner_button</sprite>
     <sprite>sprites\reload</sprite>
     <sprite>sprites\grenade_button</sprite>
+    <sprite>sprites\flame_button</sprite>
     <sprite>sprites\mine_button</sprite>
     <sprite>sprites\blip</sprite>
     <sprite>sprites\mine_unarmed_sprite</sprite>
     <sprite>sprites\mine_armed_sprite</sprite>
+    <sprite>sprites\Flame</sprite>
+    <sprite>sprites\door_button_sprite</sprite>
+    <sprite>sprites\door_sprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -38,40 +49,76 @@
     <script>scripts\ThrowGrenade.gml</script>
     <script>scripts\DropMine.gml</script>
     <script>scripts\UpdateUISelected.gml</script>
+    <script>scripts\UpdateGrid.gml</script>
+    <script>scripts\FocusView.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obstruction</object>
-    <object>objects\PlayerObject</object>
-    <object>objects\EnemyObject</object>
-    <object>objects\ProjectileParent_rename</object>
-    <object>objects\Assault</object>
-    <object>objects\MachineGunner</object>
-    <object>objects\Shotgun</object>
     <object>objects\destructible_objective_object</object>
-    <object>objects\controller_obj</object>
+    <object>objects\switch_objective</object>
     <object>objects\grille_spawn_object</object>
-    <object>objects\ProjectileParent</object>
-    <object>objects\big_beastie_object</object>
-    <object>objects\GrenadeObject</object>
-    <object>objects\MenuBackObject</object>
-    <object>objects\FireButtonObject</object>
-    <object>objects\ScannerButtonObject</object>
-    <object>objects\ReloadButtonObject</object>
-    <object>objects\MineButtonObject</object>
-    <object>objects\GrenadeButtonObject</object>
-    <object>objects\bullet</object>
-    <object>objects\shrapnel</object>
-    <object>objects\ButtonParent</object>
-    <object>objects\Selectable</object>
-    <object>objects\UI</object>
-    <object>objects\ScannerBlipObject</object>
-    <object>objects\UnarmedMineObject</object>
-    <object>objects\ArmedMineObject</object>
+    <objects name="Obstructions">
+      <object>objects\obstruction_corner1</object>
+      <object>objects\obstruction_corner3</object>
+      <object>objects\obstruction_corner4</object>
+      <object>objects\obstruction_corner2</object>
+      <object>objects\obstruction</object>
+    </objects>
+    <objects name="UI">
+      <object>objects\GrenadeButtonObject</object>
+      <object>objects\FlameButtonObject</object>
+      <object>objects\MineButtonObject</object>
+      <object>objects\ReloadButtonObject</object>
+      <object>objects\ScannerButtonObject</object>
+      <object>objects\FireButtonObject</object>
+      <object>objects\MenuBackObject</object>
+      <object>objects\UI</object>
+      <object>objects\ButtonParent</object>
+    </objects>
+    <objects name="Player">
+      <object>objects\Assault</object>
+      <object>objects\MachineGunner</object>
+      <object>objects\Shotgun</object>
+      <object>objects\PlayerObject</object>
+    </objects>
+    <objects name="Enemy">
+      <object>objects\HelmetBeast</object>
+      <object>objects\big_beastie_object</object>
+      <object>objects\HelmetBeastVuln</object>
+      <object>objects\EnemyObject</object>
+    </objects>
+    <objects name="Weapons">
+      <object>objects\FlameObject</object>
+      <object>objects\UnarmedMineObject</object>
+      <object>objects\ArmedMineObject</object>
+      <object>objects\ScannerBlipObject</object>
+      <object>objects\BlueFlameObject</object>
+      <object>objects\FlameThrowerObject</object>
+      <object>objects\FlameParent</object>
+      <object>objects\StaticFlame</object>
+      <object>objects\BurningRegion</object>
+      <object>objects\bullet</object>
+      <object>objects\shrapnel</object>
+      <object>objects\ProjectileParent</object>
+      <object>objects\GrenadeObject</object>
+      <object>objects\ProjectileParent_rename</object>
+    </objects>
+    <objects name="Abstract">
+      <object>objects\Selectable</object>
+      <object>objects\controller_obj</object>
+      <object>objects\rename_</object>
+    </objects>
+    <object>objects\button_object</object>
+    <object>objects\door_object_128</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\timeline0</timeline>
+  </timelines>
   <rooms name="rooms">
+    <room>rooms\room5</room>
+    <room>rooms\room3</room>
     <room>rooms\room2</room>
     <room>rooms\room4</room>
     <room>rooms\room4_new</room>

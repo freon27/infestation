@@ -7,4 +7,8 @@ with ScannerButtonObject {
 
 with MineButtonObject {
     visible = other.engineer
-}   
+}
+
+with FlameButtonObject {
+    visible = other.engineer
+}
